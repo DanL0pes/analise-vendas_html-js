@@ -7,7 +7,5 @@ um exercicio sobre uma confeitaria onde calculamos os itens vendidos e retorna u
 Apenas baixe o arquivo .html e abra com seu respectivo navegador :)
 
 # Recursos utilizados
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/640px-HTML5_logo_and_wordmark.svg.png" width='150px'>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" width='150px'>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/640px-Unofficial_JavaScript_logo_2.svg.png" width='150px'>
+<img src="https://github.com/DanL0pes/analise-vendas_html-js/blob/main/recursos.png?raw=true">
 
