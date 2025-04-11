@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧁 Doceria Gourmet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            font-family: 'Montserrat';
+            background-color: #f0f0f0;
+            color: #333333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .titulo{
+            margin-bottom: 4px;
+        }
+        .subtitulo{
+            margin-top: 4px;
+        }
+        .lados{
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+        }
+        .lado{
+            display: flex;
+            flex-direction: column;
+        }
+        .lado.avaliacoes{
+            height: 100%;
+            background: #FFF;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+        }
+        .formulario{
+            background: #FFF;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        label{
+            margin: 10px 0;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input{
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            font-family: 'Montserrat';
+        }
+        input:focus{
+            outline: none;
+            border-color: #1f99b8;
+        }
+        button{
+            font-family: 'Montserrat';
+            margin-top: 20px;
+            padding: 10px 0px;
+            background-color: #1f99b8;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .div_resultado{
+            display: flex;
+            gap: 24px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            padding-right: 24px;
+        }
+        .div_resultado h3{
+            margin-top: 0;
+        }
+        #div_lista_resultado{
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+        }
+        tr{
+            width: 100%;
+        }
+        tr:has(th){
+            position: sticky;
+            top: 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #dddddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td img {
+            width: 50px;
+            height: 50px;
+        }
+
+        #div_avaliacoes{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+            max-height: 520px;
+            overflow-y: auto;
+        }
+        .card{
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            padding: 18px;
+            background-color: #e9e9e9;
+            border-radius: 8px;
+        }
+        .card img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    🧁 Doceria Gourmet 
+        1. Dori Valdossin é dono de uma doceria em São Paulo, onde a sua especialidade são os doces gourmets.
+
+        Seu estabelecimento trabalha com diversos tipos de doces gourmets, porém os mais famosos do seu menu são: 
+
+        - Macarons: um doce francês feito com duas conchas de amêndoa com recheio no meio, que são populares por sua aparência colorida e delicada, bem como seus sabores únicos;
+
+        - Brigadeiros: um doce brasileiro feito com leite condensado, manteiga e chocolate em pó, que nas versões gourmet, geralmente apresentam sabores inovadores e criativos, como creme de avelã, limão siciliano, café, entre outros;
+
+        - Cupcakes: mini bolos decorados com glacê e recheados com sabores deliciosos, como baunilha, chocolate, red velvet, entre outros, dos quais são populares em casamentos, festas de aniversário e outros eventos;
+
+        - Cheesecakes: uma sobremesa feita com cream cheese, açúcar e biscoitos triturados para a base, nos quais geralmente apresentam sabores como framboesa, caramelo salgado, limão, entre outros;
+
+        Para auxiliar Dori, crie um programa o qual: 
+        a) Solicite a quantidade de cada doce a ser vendido (Macarons, Brigadeiros Gourmets, Cupcakes e Cheesecakes).
+
+        b) Solicite o preço da unidade de cada tipo de doce.
+
+        c) Ao clicar no botão "Verificar Vendas", caso todos os valores não sejam negativos, prossiga. Caso contrário, exiba uma mensagem de erro explicativa e encerre.
+
+        d) De acordo com a quantidade de cada produto informado, exiba um extrato contendo: 
+
+                "NÚMERO DA VENDA   -   IMAGEM DO DOCE   -   R$ VALOR UNITÁRIO"
+
+        e) A ordem de listagem dos doces sempre será: 
+
+                Primeiro os "Macarons"
+                Logo após, os "Brigadeiros"
+                Em seguida, os "Cupcakes"
+                Por último, os "Cheesecakes" 
+
+        Caso a quantidade informada de algum desses doces seja 0, deve pular para a listagem do próximo doce, continuando a contagem da venda (ou seja, caso o usuário informe "0 macarons", o programa deve pular a exibição dos "Macarons" e começar com o "Brigadeiro" sendo a primeira venda da lista).
+
+        e) Ao finalizar a listagem das vendas, deve exibir uma mensagem com uma frase como esta: 
+
+                "Com a quantidade de WWWW Macarons, VVVV Brigadeiros, XXXX Cupcakes e YYYY Cheesecakes, a venda totalizará R$ZZZZ"
+
+        OBS: note que são 4 entradas para o item a) e mais 4 entradas para o item b).
+
+        OBS II: crie as tags img através do JavaScript para gerar as imagens dos doces dinamicamente, de acordo com cada mensagem exibida, utilizando imagens pequenas (recomendado até 100px)  para facilitar a visualização das linhas.
+
+        OBS III: repare que, no exemplo de funcionamento, o programa pula a exibição dos Cupcakes, porém, continua a contagem das vendas sequencialmente.
+
+        EXEMPLO DE FUNCIONAMENTO: 
+
+                "Venda 1 - <Imagem de Macaron> - R$3.99"
+
+                "Venda 2 - <Imagem de Macaron> - R$3.99"
+
+                "Venda 3 - <Imagem de Brigadeiro> - R$4.99"
+
+                "Venda 4 - <Imagem de Brigadeiro> - R$4.99"
+
+                "Venda 5 - <Imagem de Brigadeiro> - R$4.99"
+
+                "Venda 6 - <Imagem de Cheesecake> - R$6.99"
+
+                "Venda 7 - <Imagem de Cheesecake> - R$6.99"
+
+                "Com a quantidade de 2 Macarons, 3 Brigadeiros, 0 Cupcakes e 2 Cheesecakes, a venda totalizará R$36.93"
+    -->
+
+    <h1 class="titulo">🧁 Doceria Gourmet</h1>
+    <p class="subtitulo">Bem-vindo ao verificador de vendas!</p>
+    <div class="lados">
+        <div class="lado verificador">
+            <div class="formulario">
+                <div class="lados">
+                    <div class="lado">
+                        <h2>Quantidades:</h2>
+                        <label for="ipt_qtde_macarron">Quantidade dos Macarons:</label>
+                        <input type="number" id="ipt_qtde_macarron" placeholder="ex. 4">
+                        <label for="ipt_qtde_brigadeiro">Quantidade dos Brigadeiros:</label>
+                        <input type="number" id="ipt_qtde_brigadeiro" placeholder="ex. 8">
+                        <label for="ipt_qtde_cupcake">Quantidade dos Cupcakes:</label>
+                        <input type="number" id="ipt_qtde_cupcake" placeholder="ex. 12">
+                        <label for="ipt_qtde_cheesecake">Quantidade dos Cheesecakes:</label>
+                        <input type="number" id="ipt_qtde_cheesecake" placeholder="ex. 2">
+                    </div>
+                    <div class="lado">
+                        <h2>Preços:</h2>
+                        <label for="ipt_valor_macarron">Valor Unitário Macaron:</label>
+                        <input type="number" id="ipt_valor_macarron" placeholder="ex. 3,99">
+                        <label for="ipt_valor_brigadeiro">Valor Unitário Brigadeiro:</label>
+                        <input type="number" id="ipt_valor_brigadeiro" placeholder="ex. 5,99">
+                        <label for="ipt_valor_cupcake">Valor Unitário Cupcake:</label>
+                        <input type="number" id="ipt_valor_cupcake" placeholder="ex. 7,99">
+                        <label for="ipt_valor_cheesecake">Valor Unitário Cheesecake:</label>
+                        <input type="number" id="ipt_valor_cheesecake" placeholder="ex. 11,99">
+                    </div>
+                </div>
+                <button onclick="verificar()">Verificar Vendas</button>
+            </div>
+            <div class="div_resultado">
+                <div id="div_lista_resultado">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Venda</th>
+                                <th>Imagem</th>
+                                <th>Valor Unitário</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista_resultado">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div id="div_resumo">
+                </div>
+            </div>
+        </div>
+        <div class="lado avaliacoes">
+            <h2>Gerador de Avaliação:</h2>
+            <label for="ipt_qtde_avaliacao">Quantidade avaliações que deseja gerar:</label>
+            <input type="number" id="ipt_qtde_avaliacao" placeholder="ex. 4">
+            <button onclick="avaliacao()">Gerar Avaliação</button>
+            <div id="div_avaliacoes">
+            </div>
+        </div>
+    </div>
+    
+    <!--
+    🎲 Desafio:
+        Após o sucesso de seu programa, Dori decidiu aprimorar a página HTML, adicionando uma funcionalidade que permita visualizar as avaliações dos clientes. No entanto, como ainda não existe uma página de avaliações, ela precisa gerar avaliações aleatórias para entender como ficaria a exibição no layout da página.
+
+        Sua tarefa é desenvolver uma funcionalidade que:
+
+        Pergunte ao usuário quantos clientes Dori deseja simular.
+
+        Para cada cliente, exiba uma mensagem no formato: "Avaliação do Xº cliente: Y", onde X representa o número do cliente e Y é a avaliação aleatória (um valor entre 1 e 5).
+
+        Após gerar as avaliações, exiba uma frase informando a médias das avaliações
+    -->
+</body>
+
+<script>
+    lista_resultado.innerHTML = `
+        <tr>
+            <td colspan="3">Clique no botão para verificar as vendas.</td>
+        </tr>`;
+
+    function verificar() {
+        lista_resultado.innerHTML = ``;
+        var idVenda = 1;
+        var qtdeMacarron = Number(ipt_qtde_macarron.value);
+        var qtdeBrigadeiro = Number(ipt_qtde_brigadeiro.value);
+        var qtdeCupcake = Number(ipt_qtde_cupcake.value);
+        var qtdeCheesecake = Number(ipt_qtde_cheesecake.value);
+        var valorMacarron = Number(ipt_valor_macarron.value);
+        var valorBrigadeiro = Number(ipt_valor_brigadeiro.value);
+        var valorCupcake = Number(ipt_valor_cupcake.value);
+        var valorCheesecake = Number(ipt_valor_cheesecake.value);
+
+        var imgMacarron = 'https://http2.mlstatic.com/D_NQ_NP_808914-MLB52939578048_122022-O-macarons-para-festas-e-eventos-varios-sabores-kit-com-20.webp';
+        var imgBrigadeiro = 'https://cdn.awsli.com.br/2500x2500/178/178422/produto/6141190/d9363c3079.jpg';
+        var imgCupcake = 'https://cdn.awsli.com.br/500x500/2765/2765888/produto/323131979/mg006890-cv8w33gcg4.jpg';
+        var imgCheesecake = 'https://atelierdossabores.com.br/centro-tijuca/wp-content/uploads/sites/7/2024/07/cheesecake-de-frutas-vermelhas-fatia-quadrado.jpg';
+
+        for(i = 0; i < qtdeMacarron; i++){
+            lista_resultado.innerHTML += `<tr>
+                <td>${idVenda}</td>
+                <td><img src='${imgMacarron}'></td>
+                <td>R$ ${valorMacarron}</td>
+            </tr>`;
+            idVenda++;
+        }
+        for(i = 0; i < qtdeBrigadeiro; i++){
+            lista_resultado.innerHTML += `<tr>
+                <td>${idVenda}</td>
+                <td><img src='${imgBrigadeiro}'></td>
+                <td>R$ ${valorBrigadeiro}</td>
+            </tr>`;
+            idVenda++;
+        }
+        for(i = 0; i < qtdeCupcake; i++){
+            lista_resultado.innerHTML += `<tr>
+                <td>${idVenda}</td>
+                <td><img src='${imgCupcake}'></td>
+                <td>R$ ${valorCupcake}</td>
+            </tr>`;
+            idVenda++;
+        }
+        for(i = 0; i < qtdeCheesecake; i++){
+            lista_resultado.innerHTML += `<tr>
+                <td>${idVenda}</td>
+                <td><img src='${imgCheesecake}'></td>
+                <td>R$ ${valorCheesecake}</td>
+            </tr>`;
+            idVenda++;
+        }
+        var total = qtdeMacarron * valorMacarron + qtdeBrigadeiro * valorBrigadeiro + qtdeCupcake * valorCupcake + qtdeCheesecake * valorCheesecake; 
+        div_resumo.innerHTML = `
+            <h3>Resumo:</h3>
+            <p><b>${qtdeMacarron}</b> Macarons<br>
+                <b>${qtdeBrigadeiro}</b> Brigadeiros<br>
+                <b>${qtdeCupcake}</b> Cupcakes<br>
+                <b>${qtdeCheesecake}</b> Cheesecakes<br>
+                Total: <b style='color: green'>R$${total.toFixed(2)}</b></p>`
+    }
+
+    div_avaliacoes.innerHTML= `
+        <h3>Avaliações:</h3>
+        <br>Para gerar as avaliações, clique no botão.</b>
+    `
+    function avaliacao(){
+        div_avaliacoes.innerHTML= `<h3>Avaliações:</h3>`
+        var qtdeAvaliacoes = Number(ipt_qtde_avaliacao.value);
+
+        var imgAvaliador1 = 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-512.png';
+        var imgAvaliador2= 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/4_avatar-512.png';
+        var imgAvaliador3 = 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png';
+
+        for(i = 0; i < qtdeAvaliacoes; i++){
+            avaliador = Math.round(Math.random() * 3 + 1);
+            if(avaliador == 1){
+                imagemAvaliador = imgAvaliador1;
+            }else if(avaliador == 2){
+                imagemAvaliador = imgAvaliador2;
+            }else if(avaliador == 3){
+                imagemAvaliador = imgAvaliador3;
+            }else{
+                imagemAvaliador = imgAvaliador1;
+            }
+
+            estrelas = ``;
+            var qtdeEstrela = Math.round(Math.random() * 5);
+            for(j = 1; j <= 5; j++){
+                if(j <= qtdeEstrela){
+                    estrelas += `<img src='https://cdn-icons-png.flaticon.com/512/17/17672.png' alt='estrela'>`
+                }else{
+                    estrelas += `<img src='https://cdn-icons-png.flaticon.com/512/18/18611.png' alt='estrela-vazia'>`
+                }
+            }
+
+            div_avaliacoes.innerHTML+= `
+            <div class='card'>
+                <h3>${i+1}a</h3>
+                <img src='${imagemAvaliador}' class='avatar'>
+                ${estrelas}
+            </div>`
+        }
+        
+    }
+</script>
+</html>
